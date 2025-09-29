@@ -22,6 +22,7 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+working/.metadata/*
 working/Tokenizers/.settings/org.eclipse.jdt.core.prefs
 working/Tokenizers/.project
 working/Tokenizers/.classpath
@@ -1243,3 +1244,90 @@ working/.metadata/.mylyn/.taskListIndex/write.lock
 working/.metadata/.mylyn/.taskListIndex/segments_1
 working/.metadata/.lock_info
 working/.metadata/.lock
+working/.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/1.png
+working/.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/0.png
+working/.metadata/.plugins/org.eclipse.core.resources/42.snap
+working/.metadata/.plugins/org.eclipse.core.resources/.root/43.tree
+working/.metadata/.plugins/org.eclipse.core.resources/.root/42.tree
+working/.metadata/.plugins/org.eclipse.core.resources/.projects/Main/.markers
+working/.metadata/.plugins/org.eclipse.core.resources/.projects/Main/.indexes/81/ea/87/26/history.index
+working/.metadata/.plugins/org.eclipse.core.resources/.projects/Main/.indexes/81/ea/21/history.index
+working/.metadata/.plugins/org.eclipse.core.resources/.history/ea/30ae5429da9500101714f6716623f493
+working/.metadata/.plugins/org.eclipse.core.resources/.history/da/8000c76fd99500101714f6716623f493
+working/.metadata/.plugins/org.eclipse.core.resources/.history/cb/00cece97d99500101714f6716623f493
+working/.metadata/.plugins/org.eclipse.core.resources/.history/8b/b07094da049700101307e4d16bbd2ece
+working/.metadata/.plugins/org.eclipse.core.resources/.history/8/f0b643c54c9d00101307e4d16bbd2ece
+working/.metadata/.plugins/org.eclipse.core.resources/.history/79/206d1524059700101307e4d16bbd2ece
+working/.metadata/.plugins/org.eclipse.core.resources/.history/76/e05b5629da9500101714f6716623f493
+working/.metadata/.plugins/org.eclipse.core.resources/.history/37/002aecaa059700101307e4d16bbd2ece
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/lockfile
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/SharedStorage-wal
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/DIPS-wal
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Code Cache/js/b7ab7e6af4e909d5_0
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Code Cache/js/9769fda07bc59eaa_0
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Code Cache/js/800282a4ef88d27c_0
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Code Cache/js/7aa7935d129a3053_0
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Code Cache/js/57efa15fa4959613_0
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Code Cache/js/50b92c019db17f29_0
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Code Cache/js/3fcd32762a6c01c4_0
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Code Cache/js/110d3d6721691a4e_0
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_000028
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_000027
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_000026
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_000025
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_000024
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_000023
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_000022
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_000021
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_000020
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_00001f
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_00001e
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/BrowserMetrics/BrowserMetrics-68DAAC52-79C4.pma
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/BrowserMetrics/BrowserMetrics-68CE3161-125D0.pma
+working/.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/1.png
+working/.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/0.png
+working/.metadata/.plugins/org.eclipse.core.resources/42.snap
+working/.metadata/.plugins/org.eclipse.core.resources/.root/42.tree
+working/.metadata/.plugins/org.eclipse.core.resources/.projects/Main/.indexes/81/ea/21/history.index
+working/.metadata/.plugins/org.eclipse.core.resources/.history/ea/30ae5429da9500101714f6716623f493
+working/.metadata/.plugins/org.eclipse.core.resources/.history/da/8000c76fd99500101714f6716623f493
+working/.metadata/.plugins/org.eclipse.core.resources/.history/cb/00cece97d99500101714f6716623f493
+working/.metadata/.plugins/org.eclipse.core.resources/.history/8b/b07094da049700101307e4d16bbd2ece
+working/.metadata/.plugins/org.eclipse.core.resources/.history/79/206d1524059700101307e4d16bbd2ece
+working/.metadata/.plugins/org.eclipse.core.resources/.history/76/e05b5629da9500101714f6716623f493
+working/.metadata/.plugins/org.eclipse.core.resources/.history/37/002aecaa059700101307e4d16bbd2ece
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_00002a
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_000029
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_00001d
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_00001c
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/BrowserMetrics/BrowserMetrics-68CE3161-125D0.pma
+working/.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/1.png
+working/.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/0.png
+working/.metadata/.plugins/org.eclipse.core.resources/42.snap
+working/.metadata/.plugins/org.eclipse.core.resources/.root/42.tree
+working/.metadata/.plugins/org.eclipse.core.resources/.projects/Main/.indexes/81/ea/21/history.index
+working/.metadata/.plugins/org.eclipse.core.resources/.history/ea/30ae5429da9500101714f6716623f493
+working/.metadata/.plugins/org.eclipse.core.resources/.history/da/8000c76fd99500101714f6716623f493
+working/.metadata/.plugins/org.eclipse.core.resources/.history/cb/00cece97d99500101714f6716623f493
+working/.metadata/.plugins/org.eclipse.core.resources/.history/8b/b07094da049700101307e4d16bbd2ece
+working/.metadata/.plugins/org.eclipse.core.resources/.history/79/206d1524059700101307e4d16bbd2ece
+working/.metadata/.plugins/org.eclipse.core.resources/.history/76/e05b5629da9500101714f6716623f493
+working/.metadata/.plugins/org.eclipse.core.resources/.history/37/002aecaa059700101307e4d16bbd2ece
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_00001d
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_00001c
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/BrowserMetrics/BrowserMetrics-68CE3161-125D0.pma
+working/.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/1.png
+working/.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/0.png
+working/.metadata/.plugins/org.eclipse.core.resources/42.snap
+working/.metadata/.plugins/org.eclipse.core.resources/.root/42.tree
+working/.metadata/.plugins/org.eclipse.core.resources/.projects/Main/.indexes/81/ea/21/history.index
+working/.metadata/.plugins/org.eclipse.core.resources/.history/ea/30ae5429da9500101714f6716623f493
+working/.metadata/.plugins/org.eclipse.core.resources/.history/da/8000c76fd99500101714f6716623f493
+working/.metadata/.plugins/org.eclipse.core.resources/.history/cb/00cece97d99500101714f6716623f493
+working/.metadata/.plugins/org.eclipse.core.resources/.history/8b/b07094da049700101307e4d16bbd2ece
+working/.metadata/.plugins/org.eclipse.core.resources/.history/79/206d1524059700101307e4d16bbd2ece
+working/.metadata/.plugins/org.eclipse.core.resources/.history/76/e05b5629da9500101714f6716623f493
+working/.metadata/.plugins/org.eclipse.core.resources/.history/37/002aecaa059700101307e4d16bbd2ece
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_00001d
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/Default/Cache/Cache_Data/f_00001c
+working/.metadata/.plugins/com.genuitec.copilot4eclipse.chat/edgedata/EBWebView/BrowserMetrics/BrowserMetrics-68CE3161-125D0.pma

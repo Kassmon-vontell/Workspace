@@ -5,9 +5,8 @@ import javax.swing.*;
 public class Console {
 	
 	private JFrame frame;
-	private JScrollPane scrollPane;
-	private JEditorPane editorPane;
-	private JTextField textField;
+	private JTextArea displayArea;
+	private JTextField inputField;
 	
 	private JMenuBar menuBar;
 	private JMenu fileMenu;
@@ -16,8 +15,7 @@ public class Console {
 	
 	
 	private Console () {
-		frame = new JFrame("Console");
-		frame.setLayout(null);
+		initFrame();
 		
 		
 	}
@@ -31,6 +29,11 @@ public class Console {
 		frame.setLayout(null);
 		frame.setResizable(true);
 		frame.setBounds(100, 100, 800, 600);
+	}
+	
+	private void initUi() {
+		
+		
 	}
 	
 }
