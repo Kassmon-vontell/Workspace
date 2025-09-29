@@ -1,5 +1,6 @@
 package com.kassmon.modules.console.commands;
 
+import com.kassmon.modules.console.Console;
 import com.kassmon.modules.tokenizer.Token;
 
 public abstract class ConsoleCommand {
@@ -10,6 +11,8 @@ public abstract class ConsoleCommand {
 	
 	abstract public void execute(Token[] args);
 	
-	
+	public ConsoleCommand(Console console) {
+		
+	}
 	
 }

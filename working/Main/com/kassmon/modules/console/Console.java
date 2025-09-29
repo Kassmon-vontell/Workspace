@@ -5,36 +5,59 @@ import java.awt.Color;
 import javax.swing.*;
 import javax.swing.text.*;
 
-@SuppressWarnings("unused")
-public class ConsoleFrame {
+public class Console {
+	
+	public final int FRAME = 0;
+	public final int INTERNALFRAME = 1;
+	public final int PANEL = 2;
+	
 	
 	private JFrame frame;
+	private JInternalFrame internalFrame;
+	private JPanel panel;
+	
+	JScrollPane scrollPane;
 	private JTextPane displayArea;
 	private JTextField inputField;
-	
 	
 	private JMenuBar menuBar;
 	private JMenu fileMenu;
 	private JMenu editMenu;
 	private JMenu helpMenu;
 	
-	
-	private ConsoleFrame () {
-		initFrame();
-		initMenuBar();
+	private Console(int type) {
+		if (type == FRAME) initFrame();
+		if (type == INTERNALFRAME) initInternalFrame();
+		if (type == PANEL) initPanel();
+		if (type != PANEL) initMenuBar();
 		initUi();
-		frame.setVisible(true);
+		if (type == FRAME) addComponentsToFrame();
+		if (type == INTERNALFRAME) addComponentsToInternalFrame();
+		if (type == PANEL) addComponentsToPanel();
 	}
 	
-	public static ConsoleFrame makeConsole () {
-        return new ConsoleFrame();
-    }
+	public static Console makeConsole(int type) {
+		return new Console(type);
+	}
 	
 	private void initFrame() {
 		frame = new JFrame("Console");
 		frame.setLayout(null);
 		frame.setResizable(true);
 		frame.setBounds(100, 100, 800, 600);
+	}
+	
+	private void initInternalFrame() {
+		internalFrame = new JInternalFrame("Console");
+		internalFrame.setLayout(null);
+		internalFrame.setResizable(true);
+		internalFrame.setBounds(100, 100, 800, 600);
+	}
+	
+	private void initPanel() {
+		panel = new JPanel();
+		panel.setLayout(null);
+		panel.setBounds(100, 100, 800, 600);
 	}
 	
 	private void initMenuBar() {
@@ -52,10 +75,8 @@ public class ConsoleFrame {
 	}
 	
 	private void initUi() {
-		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 10, frame.getWidth() - 40, frame.getHeight() - 120);
-		frame.add(scrollPane);
 		scrollPane.setVisible(true);
 		
 		displayArea = new JTextPane();
@@ -65,9 +86,22 @@ public class ConsoleFrame {
 		
 		inputField = new JTextField();
 		inputField.setBounds(10, frame.getHeight() - 100, frame.getWidth() - 40, 30);
-		frame.add(inputField);
 		inputField.setVisible(true);
-		
+	}
+	
+	private void addComponentsToFrame() {
+		frame.add(scrollPane);
+		frame.add(inputField);
+	}
+	
+	private void addComponentsToInternalFrame() {
+		internalFrame.add(scrollPane);
+		internalFrame.add(inputField);
+	}
+	
+	private void addComponentsToPanel() {
+		panel.add(scrollPane);
+		panel.add(inputField);
 	}
 	
 	private void appendColoredText(String text, Color color) {
@@ -91,6 +125,14 @@ public class ConsoleFrame {
 	
 	public void outputWarningToConsole(String text) {
 		appendColoredText(text + "\n", Color.orange);
+	}
+	
+	public void clearConsole() {
+		displayArea.setText("");
+	}
+	
+	public void processInput(JComponent component) {
+		
 	}
 	
 }
