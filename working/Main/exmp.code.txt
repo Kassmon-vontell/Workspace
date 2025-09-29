@@ -1,0 +1,33 @@
+function init {
+	var int var0;
+	var int var1;
+	var int var2 101;
+	
+	var boolean varbool1 true;
+	
+	var string varstr1 "Hello World!";
+	
+	set var1 100;
+}
+
+function main {
+	compare.equels(var1, var2) test;
+	compare.notEquels(var1, var2) test;
+	compare.grater(var1, var2) test;
+	compare.lessthan(var1, var2) test;
+	compare.or(var1, var2) test;
+	compare.and(var1, var2) test;
+	compare.xor(var1, var2) test;
+	
+	compare.equels(ver1, var2) {
+		break;
+	}
+}
+
+function loop {
+	
+}
+
+function test {
+	
+}
