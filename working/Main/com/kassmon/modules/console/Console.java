@@ -2,6 +2,8 @@
 package com.kassmon.modules.console;
 
 import java.awt.Color;
+import java.awt.Container;
+
 import javax.swing.*;
 import javax.swing.text.*;
 
@@ -12,7 +14,6 @@ import javax.swing.text.*;
  */
 public class Console {
 
-	// Console display types
 	public static final int FRAME = 0;
 	public static final int INTERNALFRAME = 1;
 	public static final int PANEL = 2;
@@ -32,30 +33,25 @@ public class Console {
 
 	/**
 	 * Private constructor to initialize the console based on the specified type.
-	 *@param type the type of console (FRAME, INTERNALFRAME, or PANEL)
+	 *
+	 * @param type the type of console (FRAME, INTERNALFRAME, or PANEL)
 	 */
 	private Console(int type) {
-		if (type == FRAME)
-			initFrame();
-		if (type == INTERNALFRAME)
-			initInternalFrame();
-		if (type == PANEL)
-			initPanel();
-		if (type != PANEL)
+		if (type == FRAME || type == INTERNALFRAME) {
+			initWindow(type == FRAME);
 			initMenuBar();
-		initUi();
-		setComponentSizes();
-		if (type == FRAME)
-			addComponentsToFrame();
-		if (type == INTERNALFRAME)
-			addComponentsToInternalFrame();
-		if (type == PANEL)
-			addComponentsToPanel();
+		} else {
+			panel = new JPanel(null);
+			panel.setBounds(100, 100, 800, 600);
+		}
+		initUiComponents();
+		addComponents(type);
 	}
 
 	/**
 	 * Factory method to create a new Console instance.
-	 *@param type the type of console (FRAME, INTERNALFRAME, or PANEL)
+	 *
+	 * @param type the type of console (FRAME, INTERNALFRAME, or PANEL)
 	 * @return a new Console instance
 	 */
 	public static Console makeConsole(int type) {
@@ -63,97 +59,61 @@ public class Console {
 	}
 
 	/**
-	 * Initializes the JFrame for the console.
+	 * Initializes the JFrame or JInternalFrame.
+	 *
+	 * @param isFrame true if initializing a JFrame, false for JInternalFrame
 	 */
-	private void initFrame() {
-		frame = new JFrame("Console");
-		frame.setLayout(null);
-		frame.setResizable(true);
-		frame.setBounds(100, 100, 800, 600);
-	}
-
-	/**
-	 * Initializes the JInternalFrame for the console.
-	 */
-	private void initInternalFrame() {
-		internalFrame = new JInternalFrame("Console");
-		internalFrame.setLayout(null);
-		internalFrame.setResizable(true);
-		internalFrame.setBounds(100, 100, 800, 600);
-	}
-
-	/**
-	 * Initializes the JPanel for the console.
-	 */
-	private void initPanel() {
-		panel = new JPanel();
-		panel.setLayout(null);
-		panel.setBounds(100, 100, 800, 600);
-	}
-
-	/**
-	 * Sets the sizes of the console's components based on the frame dimensions.
-	 */
-	public void setComponentSizes() {
-		scrollPane.setBounds(10, 10, frame.getWidth() - 40, frame.getHeight() - 120);
-		inputField.setBounds(10, frame.getHeight() - 100, frame.getWidth() - 40, 30);
-	}
-
-	/**
-	 * Initializes the menu bar and its menus for the console.
-	 */
-	private void initMenuBar() {
-		menuBar = new JMenuBar();
-		frame.setJMenuBar(menuBar);
-
-		fileMenu = new JMenu("File");
-		menuBar.add(fileMenu);
-
-		editMenu = new JMenu("Edit");
-		menuBar.add(editMenu);
-
-		helpMenu = new JMenu("Help");
-		menuBar.add(helpMenu);
+	private void initWindow(boolean isFrame) {
+		if (isFrame) {
+			frame = new JFrame("Console");
+			frame.setLayout(null);
+			frame.setResizable(true);
+			frame.setBounds(100, 100, 800, 600);
+		} else {
+			internalFrame = new JInternalFrame("Console");
+			internalFrame.setLayout(null);
+			internalFrame.setResizable(true);
+			internalFrame.setBounds(100, 100, 800, 600);
+		}
 	}
 
 	/**
 	 * Initializes the UI components of the console.
 	 */
-	private void initUi() {
+	private void initUiComponents() {
 		scrollPane = new JScrollPane();
-		scrollPane.setVisible(true);
-
 		displayArea = new JTextPane();
 		displayArea.setEditable(false);
-		displayArea.setVisible(true);
 		scrollPane.setViewportView(displayArea);
 
 		inputField = new JTextField();
+
+		scrollPane.setVisible(true);
+		displayArea.setVisible(true);
 		inputField.setVisible(true);
 	}
 
 	/**
-	 * Adds components to the JFrame.
+	 * Adds components to the appropriate container based on the console type.
+	 *
+	 * @param type the type of console (FRAME, INTERNALFRAME, or PANEL)
 	 */
-	private void addComponentsToFrame() {
-		frame.add(scrollPane);
-		frame.add(inputField);
+	private void addComponents(int type) {
+		Container container = (type == FRAME) ? frame.getContentPane() : (type == INTERNALFRAME) ? internalFrame.getContentPane() : panel;
+		container.add(scrollPane);
+		container.add(inputField);
+		setComponentSizes(container.getWidth(), container.getHeight());
 	}
 
 	/**
-	 * Adds components to the JInternalFrame.
+	 * Sets the sizes of the console's components based on the container dimensions.
+	 *
+	 * @param width  the width of the container
+	 * @param height the height of the container
 	 */
-	private void addComponentsToInternalFrame() {
-		internalFrame.add(scrollPane);
-		internalFrame.add(inputField);
-	}
-
-	/**
-	 * Adds components to the JPanel.
-	 */
-	private void addComponentsToPanel() {
-		panel.add(scrollPane);
-		panel.add(inputField);
+	private void setComponentSizes(int width, int height) {
+		scrollPane.setBounds(10, 10, width - 40, height - 120);
+		inputField.setBounds(10, height - 100, width - 40, 30);
 	}
 
 	/**
@@ -174,30 +134,13 @@ public class Console {
 	}
 
 	/**
-	 * Outputs a line of text to the console in black color.
+	 * Outputs a line of text to the console in the specified color.
 	 *
-	 * @param text the text to output
+	 * @param text  the text to output
+	 * @param color the color of the text
 	 */
-	public void outputLineToConsole(String text) {
-		appendColoredText(text + "\n", Color.black);
-	}
-
-	/**
-	 * Outputs an error message to the console in red color.
-	 *
-	 * @param text the error message to output
-	 */
-	public void outputErrorToConsole(String text) {
-		appendColoredText("[ERROR]" + text + "\n", Color.red);
-	}
-
-	/**
-	 * Outputs a warning message to the console in orange color.
-	 *
-	 * @param text the warning message to output
-	 */
-	public void outputWarningToConsole(String text) {
-		appendColoredText("[WARNING]" + text + "\n", Color.orange);
+	public void outputToConsole(String text, Color color) {
+		appendColoredText(text + "\n", color);
 	}
 
 	/**
@@ -215,7 +158,23 @@ public class Console {
 	 */
 	public void processInput(JComponent component) {
 		if (component == inputField) {
-			//TODO Implement input processing logic
+			// TODO Implement input processing logic
 		}
+	}
+
+	/**
+	 * Initializes the menu bar and its menus for the console.
+	 */
+	private void initMenuBar() {
+		menuBar = new JMenuBar();
+		frame.setJMenuBar(menuBar);
+
+		fileMenu = new JMenu("File");
+		editMenu = new JMenu("Edit");
+		helpMenu = new JMenu("Help");
+
+		menuBar.add(fileMenu);
+		menuBar.add(editMenu);
+		menuBar.add(helpMenu);
 	}
 }
