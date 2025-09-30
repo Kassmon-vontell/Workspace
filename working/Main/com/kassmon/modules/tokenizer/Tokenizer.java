@@ -23,6 +23,10 @@ public class Tokenizer {
 	public void addPattern(Pattern pattern, String type) {
 		patterns.add(new TokenPattern(pattern, type));
 	}
+	
+	public void addPattern(String regex, String type) {
+		patterns.add(new TokenPattern(Pattern.compile(regex), type));
+	}
 
 	/**
 	 * Checks if there are more tokens to process.
@@ -80,6 +84,14 @@ public class Tokenizer {
 	 */
 	public String getInput() {
 		return input;
+	}
+
+	public Token[] getAllTokens() {
+		ArrayList<Token> tokens = new ArrayList<>();
+		while (hasNextToken()) {
+			tokens.add(getNextToken());
+		}
+		return tokens.toArray(new Token[0]);
 	}
 
 }
