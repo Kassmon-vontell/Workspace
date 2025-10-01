@@ -20,7 +20,7 @@ public class Echo extends ConsoleCommand {
 			if (!t.getType().equals("COMMAND"))
 			output += t.getValue() + " ";
 		}
-		super.getConsole().outputToConsole(output.trim(), Color.black);
+		super.getConsole().outputToConsole(output.trim() + System.lineSeparator(), Color.black);
 	}
 
 }

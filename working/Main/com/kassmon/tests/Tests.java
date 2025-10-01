@@ -8,6 +8,6 @@ import com.kassmon.modules.console.ConsoleFrame;
 public class Tests {
 	public static void main(String[] args) {
 		Console console = ConsoleFrame.makeConsole();
-		console.outputToConsole("Hello, World!", Color.blue);
+		console.outputToConsole("Hello, World!" + System.lineSeparator(), Color.blue);
 	}
 }
