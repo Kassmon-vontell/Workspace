@@ -1,24 +1,13 @@
 package com.kassmon.modules.console;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
+import javax.swing.*;
+import javax.swing.text.*;
 
-import com.kassmon.modules.console.commands.ConsoleCommand;
+import com.kassmon.modules.console.commands.*;
 import com.kassmon.modules.tokenizer.Tokenizer;
 
 public class ConsoleFrame implements Console, ActionListener, ComponentListener  {
@@ -98,6 +87,11 @@ public class ConsoleFrame implements Console, ActionListener, ComponentListener 
 	private void initCommandSystem() {
 		tokenizer = new Tokenizer();
 		commands = new ArrayList<>();
+		
+		addCommand(new Clear(this) , "^clear$", "COMMAND");
+		addCommand(new Echo(this) , "^echo", "COMMAND");
+		
+		tokenizer.addPattern("[a-zA-Z0-9]*", "text");
 	}
 	
 	public void addCommand(ConsoleCommand command, String Regex, String type) {

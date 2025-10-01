@@ -14,8 +14,10 @@ public class Echo extends ConsoleCommand {
 
 	@Override
 	public void execute(Token[] args) {
+		
 		String output = "";
 		for (Token t : args) {
+			if (!t.getType().equals("COMMAND"))
 			output += t.getValue() + " ";
 		}
 		super.getConsole().outputToConsole(output.trim(), Color.black);
