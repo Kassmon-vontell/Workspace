@@ -1,5 +1,5 @@
 
-package com.kassmon.modules.scriptSystem;
+package com.kassmon.hackGame.modules.scriptSystem;
 
 import javax.script.*;
 

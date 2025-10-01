@@ -1,5 +1,5 @@
 
-package com.kassmon.hackGame.settings;
+package com.kassmon.hackGame.modules.settings;
 
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
