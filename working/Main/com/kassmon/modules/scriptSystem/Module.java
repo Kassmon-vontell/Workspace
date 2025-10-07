@@ -1,4 +1,4 @@
-package com.kassmon.hackGame.modules.scriptSystem;
+package com.kassmon.modules.scriptSystem;
 
 public interface Module {
 	

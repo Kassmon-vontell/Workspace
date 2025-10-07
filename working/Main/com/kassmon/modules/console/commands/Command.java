@@ -1,20 +1,20 @@
 package com.kassmon.modules.console.commands;
 
-import com.kassmon.modules.console.Console;
+import com.kassmon.modules.console.ui.ConsoleIF;
 import com.kassmon.modules.tokenizer.Token;
 
-public abstract class ConsoleCommand {
+public abstract class Command {
 	
 	private String name;
 	private String description;
 	private String usage;
 	
-	private Console console;
+	private ConsoleIF console;
 	
 	abstract public void execute(Token[] args);
 	
 	
-	public ConsoleCommand(Console console, String name, String description, String usage) {
+	public Command(ConsoleIF console, String name, String description, String usage) {
 		this.console = console;
 		this.name = name;
 		this.description = description;
@@ -33,7 +33,7 @@ public abstract class ConsoleCommand {
 		return usage;
 	}
 	
-	public Console getConsole() {
+	public ConsoleIF getConsole() {
 		return console;
 	}
 	
