@@ -5,6 +5,12 @@ import javax.swing.*;
 
 import com.kassmon.game.ui.Api.UIComponent;
 
+/**
+ * The LoginScreen class provides a user interface for user authentication.
+ * It displays a login form with username selection via combo box, password field,
+ * and login/register buttons. This class extends JInternalFrame and implements
+ * the UIComponent interface.
+ */
 @SuppressWarnings("serial")
 public class LoginScreen extends JInternalFrame implements UIComponent {
 
@@ -16,6 +22,10 @@ public class LoginScreen extends JInternalFrame implements UIComponent {
 	private JButton LoginButton;
 	private JButton RegisterButton;
 
+	/**
+	 * Constructs a new LoginScreen and initializes all UI components.
+	 * The login screen is displayed as an internal frame with a fixed size.
+	 */
 	public LoginScreen() {
 		super("Login Screen");
 		setLayout(null); // Use null layout manager
@@ -52,11 +62,21 @@ public class LoginScreen extends JInternalFrame implements UIComponent {
 		setVisible(true);
 	}
 
+	/**
+	 * Retrieves the name of this UI component.
+	 *
+	 * @return the component name "LoginScrean"
+	 */
 	@Override
 	public String getName() {
 		return "LoginScrean";
 	}
 
+	/**
+	 * Retrieves the unique identifier of this UI component.
+	 *
+	 * @return the component ID (0)
+	 */
 	@Override
 	public int getId() {
 		return 0;

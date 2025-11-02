@@ -24,6 +24,12 @@ public class Tokenizer {
 		patterns.add(new TokenPattern(pattern, type));
 	}
 	
+	/**
+	 * Adds a token pattern to the tokenizer using a regex string.
+	 *
+	 * @param regex the regex string to match
+	 * @param type  the type of the token
+	 */
 	public void addPattern(String regex, String type) {
 		patterns.add(new TokenPattern(Pattern.compile(regex), type));
 	}
@@ -86,6 +92,11 @@ public class Tokenizer {
 		return input;
 	}
 
+	/**
+	 * Retrieves all remaining tokens from the input.
+	 *
+	 * @return an array of all tokens
+	 */
 	public Token[] getAllTokens() {
 		ArrayList<Token> tokens = new ArrayList<>();
 		while (hasNextToken()) {
