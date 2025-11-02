@@ -3,28 +3,29 @@ package com.kassmon.modules.settings;
 
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import java.io.File;
+import java.io.*;
+import java.nio.file.*;
+import java.util.Base64;
 
 /**
- * The SettingsManger class provides functionality to manage application
- * settings using an XML file. It allows initializing settings, setting default
- * values, retrieving and updating specific settings, and saving changes to the
- * file.
+ * The `SettingsManger` class provides functionality to manage application
+ * settings using an XML file that is Base64-encoded. It supports initializing
+ * settings, setting default values, retrieving and updating specific settings,
+ * and saving changes to the file.
  */
 public class SettingsManger {
-	private static Document document; // XML Document object to manage settings
+	private static Document document; // XML document to manage settings
 
 	/**
-	 * Initializes the settings manager with the specified XML file. If the file
-	 * does not exist, it creates a new one with default settings.
+	 * Initializes the settings manager with the specified Base64-encoded XML file.
+	 * If the file does not exist, it creates a new one with default settings.
 	 *
-	 * @param filePath The path to the XML file to be used for settings.
+	 * @param filePath The path to the Base64-encoded XML file to be used for
+	 *                 settings.
 	 */
 	public static void init(String filePath) {
 		try {
@@ -33,11 +34,17 @@ public class SettingsManger {
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 
 			if (!xmlFile.exists()) {
-				document = dBuilder.newDocument(); // Initialize document
+				document = dBuilder.newDocument(); // Create a new XML document
 				setDefaultSettings(); // Set default settings
 				save(filePath); // Save default settings to file
 			} else {
-				document = dBuilder.parse(xmlFile); // Parse existing file
+				// Read Base64-encoded content
+				String base64Content = new String(Files.readAllBytes(Paths.get(filePath)));
+				byte[] decodedBytes = Base64.getDecoder().decode(base64Content);
+				String xmlContent = new String(decodedBytes);
+
+				// Parse the decoded XML content
+				document = dBuilder.parse(new java.io.ByteArrayInputStream(xmlContent.getBytes()));
 				document.getDocumentElement().normalize(); // Normalize the document
 			}
 		} catch (Exception e) {
@@ -62,14 +69,22 @@ public class SettingsManger {
 			}
 		}
 
-		setElementValue("FontSize", "16"); // Set default font size
+		loadDefaultsValues(); // Load default values into the document
 	}
 
 	/**
-	 * Creates a new XML element with the specified tag name and value.
+	 * Loads default values into the XML document. This method should be customized
+	 * to define the default settings for the application.
+	 */
+	public static void loadDefaultsValues() {
+		
+	}
+
+	/**
+	 * Creates an XML element with the specified tag name and value.
 	 *
-	 * @param tagName The name of the XML element.
-	 * @param value   The value to be set for the element.
+	 * @param tagName The name of the XML tag.
+	 * @param value   The value to be set for the tag.
 	 * @return The created XML element.
 	 * @throws IllegalStateException if the document is not initialized.
 	 */
@@ -83,10 +98,10 @@ public class SettingsManger {
 	}
 
 	/**
-	 * Retrieves the value of the specified XML element.
+	 * Retrieves the value of the specified XML tag.
 	 *
-	 * @param tagName The name of the XML element to retrieve.
-	 * @return The value of the element, or null if the element does not exist.
+	 * @param tagName The name of the XML tag.
+	 * @return The value of the tag, or null if the tag does not exist.
 	 * @throws IllegalStateException if the document is not initialized.
 	 */
 	public static String getElementValue(String tagName) {
@@ -102,11 +117,11 @@ public class SettingsManger {
 	}
 
 	/**
-	 * Sets the value of the specified XML element. If the element does not exist,
-	 * it creates a new one.
+	 * Sets the value of the specified XML tag. If the tag does not exist, it
+	 * creates a new tag with the specified value.
 	 *
-	 * @param tagName The name of the XML element to set.
-	 * @param value   The value to be set for the element.
+	 * @param tagName The name of the XML tag.
+	 * @param value   The value to be set for the tag.
 	 * @throws IllegalStateException if the document is not initialized.
 	 */
 	public static void setElementValue(String tagName, String value) {
@@ -124,9 +139,43 @@ public class SettingsManger {
 	}
 
 	/**
-	 * Saves the current state of the XML document to the specified file.
+	 * Saves an array of values as a comma-separated string in the specified XML
+	 * tag.
 	 *
-	 * @param filePath The path to the file where the document should be saved.
+	 * @param tagName The name of the XML tag.
+	 * @param values  The array of values to be saved.
+	 * @throws IllegalStateException if the document is not initialized.
+	 */
+	public static void setArrayElementValue(String tagName, String[] values) {
+		if (document == null) {
+			throw new IllegalStateException("Document is not initialized.");
+		}
+		String joinedValues = String.join(",", values);
+		setElementValue(tagName, joinedValues);
+	}
+
+	/**
+	 * Retrieves an array of values from a comma-separated string in the specified
+	 * XML tag.
+	 *
+	 * @param tagName The name of the XML tag.
+	 * @return The array of values, or null if the tag does not exist.
+	 * @throws IllegalStateException if the document is not initialized.
+	 */
+	public static String[] getArrayElementValue(String tagName) {
+		if (document == null) {
+			throw new IllegalStateException("Document is not initialized.");
+		}
+		String value = getElementValue(tagName);
+		return value != null ? value.split(",") : null;
+	}
+
+	/**
+	 * Saves the current state of the XML document to the specified file as a
+	 * Base64-encoded string.
+	 *
+	 * @param filePath The path to the file where the Base64-encoded XML document
+	 *                 should be saved.
 	 * @throws IllegalStateException if the document is not initialized.
 	 */
 	public static void save(String filePath) {
@@ -137,9 +186,17 @@ public class SettingsManger {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes"); // Format output
-			DOMSource source = new DOMSource(document);
-			StreamResult result = new StreamResult(new File(filePath));
-			transformer.transform(source, result); // Save to file
+			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+			transformer.transform(new DOMSource(document), new StreamResult(outputStream));
+			String xmlString = outputStream.toString();
+
+			// Encode the XML string into Base64
+			String base64EncodedXml = Base64.getEncoder().encodeToString(xmlString.getBytes());
+
+			// Save the Base64 string to the file
+			try (FileWriter file = new FileWriter(filePath)) {
+				file.write(base64EncodedXml);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

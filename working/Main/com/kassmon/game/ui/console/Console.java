@@ -1,10 +1,8 @@
-package com.kassmon.modules.console.ui;
+package com.kassmon.game.ui.console;
 
 import java.awt.Color;
 
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
+import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -13,56 +11,36 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
-import com.kassmon.modules.console.api.Console;
-import com.kassmon.modules.console.api.ConsoleControler;
-import com.kassmon.modules.console.events.listeners.InputListener;
-import com.kassmon.modules.console.events.listeners.ResizeListener;
+import com.kassmon.game.ui.Api.UIComponent;
+
+
 
 @SuppressWarnings("serial")
-public class ConsoleF extends JFrame implements Console {
+public class Console extends JInternalFrame implements UIComponent {
 	
 	private JScrollPane scrollPane;
 	private JTextPane displayArea;
 	private JTextField inputField;
 	
-	private JMenuBar menuBar;
-	private JMenu fileMenu;
-	private JMenu editMenu;
-	private JMenu helpMenu;
+	String name;
+	int id;
 	
-	private ConsoleControler consoleControler;
-	
-	public ConsoleF(ConsoleControler consoleControler) {
-        this.initUI();
-        this.initMenuBar();
-        this.resizeConsole();
-        
-        this.setTitle("Console");
-        this.setSize(600, 400);
-        this.setVisible(true);
-        this.setResizable(true);
-        this.setLayout(null);
-        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        this.consoleControler = consoleControler;
-        this.addComponentListener(new ResizeListener(consoleControler));
-    }
-	
-	private void initMenuBar() {
-		menuBar = new JMenuBar();
-		fileMenu = new JMenu("File");
-		editMenu = new JMenu("Edit");
-		helpMenu = new JMenu("Help");
-
-		menuBar.add(fileMenu);
-		menuBar.add(editMenu);
-		menuBar.add(helpMenu);
-
-		this.setJMenuBar(menuBar);
+	public Console(String name, int id) {
+		initConsole();
+		resizeConsole();
+		this.name = name;
+		this.id = id;
 	}
 	
-	private void initUI() {
+	private void initConsole() {
+		setTitle("Console");
+		setSize(400, 300);
+		setLayout(null);
+		setResizable(true);
+		
 		displayArea = new JTextPane();
 		displayArea.setEditable(false);
+		
 		
 		scrollPane = new JScrollPane(displayArea);
 		scrollPane.setVisible(true);
@@ -72,19 +50,16 @@ public class ConsoleF extends JFrame implements Console {
 		
 		this.add(scrollPane);
 		this.add(inputField);
-		
-		inputField.addActionListener(new InputListener(consoleControler));
-		
 	}
 	
 	public void resizeConsole() {
 		int width = this.getWidth();
 		int height = this.getHeight();
-		scrollPane.setBounds(10, 10, width - 30, height - 120);
-		inputField.setBounds(10, height - 100, width - 30, 30);
+		scrollPane.setBounds(10, 10, width - 30, height - 1000);
+		inputField.setBounds(10, height - 80, width - 30, 30);
 	}
 	
-	public void outputToConsole(String text, Color color) {
+	private void outputToConsole(String text, Color color) {
 		StyledDocument doc = displayArea.getStyledDocument();
 		SimpleAttributeSet style = new SimpleAttributeSet();
 		StyleConstants.setForeground(style, color);
@@ -127,10 +102,18 @@ public class ConsoleF extends JFrame implements Console {
 		inputField.setText("");
 	}
 
-	@Override
 	public String getInput() {
 		return this.inputField.getText();
 	}
 	
+	@Override
+	public String getName() {
+		return name;
+	}
+	
+	@Override
+	public int getId() {
+		return id;
+	}
 	
 }

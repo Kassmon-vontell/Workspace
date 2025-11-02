@@ -14,10 +14,13 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+import com.kassmon.modules.console.api.Console;
+import com.kassmon.modules.console.api.ConsoleControler;
+import com.kassmon.modules.console.events.listeners.InputListener;
+import com.kassmon.modules.console.events.listeners.ResizeListener;
+
 @SuppressWarnings("serial")
-public class ConsoleIF extends JInternalFrame {
-	
-	public static final int MODE_DEFAULT = 0, MODE_CONTROL = 1, MODE_INTERACTIVE_SCRIPTING = 2;
+public class ConsoleIF extends JInternalFrame implements Console {
 	
 	private JScrollPane scrollPane;
 	private JTextPane displayArea;
@@ -28,10 +31,9 @@ public class ConsoleIF extends JInternalFrame {
 	private JMenu editMenu;
 	private JMenu helpMenu;
 	
-	private int consoleMode = 0;
-	private String consoleTarget = "default";
+	private ConsoleControler consoleControler;
 	
-	public ConsoleIF() {
+	public ConsoleIF(ConsoleControler consoleControler) {
         this.initUI();
         this.initMenuBar();
         this.resizeConsole();
@@ -39,11 +41,12 @@ public class ConsoleIF extends JInternalFrame {
         this.setTitle("Console");
         this.setSize(600, 400);
         this.setVisible(true);
+        this.setResizable(true);
         this.setClosable(true);
         this.setIconifiable(true);
-        this.setResizable(true);
         this.setLayout(null);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        this.consoleControler = consoleControler;
     }
 	
 	private void initMenuBar() {
@@ -57,6 +60,9 @@ public class ConsoleIF extends JInternalFrame {
 		menuBar.add(helpMenu);
 
 		this.setJMenuBar(menuBar);
+		
+		this.addComponentListener(new ResizeListener(consoleControler));
+		
 	}
 	
 	private void initUI() {
@@ -71,6 +77,8 @@ public class ConsoleIF extends JInternalFrame {
 		
 		this.add(scrollPane);
 		this.add(inputField);
+		
+		inputField.addActionListener(new InputListener(consoleControler));
 		
 	}
 	
@@ -90,6 +98,10 @@ public class ConsoleIF extends JInternalFrame {
 		} catch (BadLocationException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void println(String text) {
+		outputToConsole(text + "\n", Color.black);
 	}
 	
 	public void println() {
@@ -119,21 +131,11 @@ public class ConsoleIF extends JInternalFrame {
 	public void clearConsoleInput() {
 		inputField.setText("");
 	}
-	
-	public void setConsoleMode(int mode) {
-		this.consoleMode = mode;
+
+	@Override
+	public String getInput() {
+		return this.inputField.getText();
 	}
 	
-	public int getConsoleMode() {
-		return this.consoleMode;
-	}
-	
-	public void setConsoleTarget(String target) {
-		this.consoleTarget = target;
-	}
-	
-	public String getConsoleTarget() {
-		return this.consoleTarget;
-	}
 	
 }

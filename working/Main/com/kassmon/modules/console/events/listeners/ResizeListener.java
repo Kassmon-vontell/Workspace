@@ -3,19 +3,19 @@ package com.kassmon.modules.console.events.listeners;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
-import com.kassmon.modules.console.ui.ConsoleIF;
+import com.kassmon.modules.console.api.ConsoleControler;
 
 public class ResizeListener implements ComponentListener {
 	
-	private ConsoleIF console;
+	private ConsoleControler consoleControler;
 	
-	private ResizeListener(ConsoleIF console) {
-		this.console = console;
+	public ResizeListener(ConsoleControler consoleControler) {
+		this.consoleControler = consoleControler;
 	}
 	
 	@Override
 	public void componentResized(ComponentEvent e) {
-		console.resizeConsole();
+		consoleControler.resizeConsole();
 	}
 
 	@Override

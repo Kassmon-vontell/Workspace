@@ -27,7 +27,7 @@ public class Engine {
 	 *               scripting engine
 	 * @param module the module object to be added
 	 */
-	public void addModuleToEngine(String key, Module module) {
+	public void addModuleToEngine(String key, Object module) {
 		engine.put(key, module);
 	}
 
