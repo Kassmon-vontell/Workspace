@@ -71,7 +71,7 @@ public class Console extends JInternalFrame implements UIComponent {
 	public void resizeConsole() {
 		int width = this.getWidth();
 		int height = this.getHeight();
-		scrollPane.setBounds(10, 10, width - 30, height - 1000);
+		scrollPane.setBounds(10, 10, width - 30, height - 100);
 		inputField.setBounds(10, height - 80, width - 30, 30);
 	}
 	

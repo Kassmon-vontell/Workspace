@@ -24,8 +24,9 @@ public class ConsoleControler {
 	 * @param frameType the type of frame (FRAME or INTERNALFRAME)
 	 */
 	private ConsoleControler (int frameType) {
+		eventListeners = new ArrayList<>();
 		if (frameType == FRAME) c = new ConsoleF(this);
-		if (frameType == INTERNALFRAME) c = new ConsoleF(this);
+		if (frameType == INTERNALFRAME) c = new ConsoleIF(this);
 		
 	}
 	
