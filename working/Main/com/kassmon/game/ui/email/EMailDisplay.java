@@ -10,7 +10,7 @@ public class EMailDisplay extends JInternalFrame {
 	private ArrayList<Email> mailList;
 	
 	private JButton mailButtons[] = new JButton[10];
-	private JButton next, previous, deleteMail;
+	private JButton next, previous, deleteMail, missionTermnal;
 	
 	private int vewOffset = 0;
 	private int lookingAtEmailNumber = 0;

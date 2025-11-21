@@ -6,8 +6,10 @@ public class Email {
 	private String subject;
 	private String body;
 	private boolean deletable;
+	private boolean hasMission;
 	
-	public Email(String sender, String subject, String body, boolean deletable) {
+	
+	public Email(String sender, String subject, String body, boolean deletable, boolean hasMission) {
 		this.sender = sender;
 		this.subject = subject;
 		this.body = body;
@@ -34,5 +36,8 @@ public class Email {
 		return deletable;
 	}
 	
+	public boolean hasMission() {
+		return hasMission;
+	}
 	
 }

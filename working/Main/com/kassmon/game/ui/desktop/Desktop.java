@@ -18,12 +18,7 @@ public class Desktop {
 	
 	private static EMailDisplay emailDisplay;
 	
-	static {
-		initDesktop();
-		initEmailDisplay();
-	}
-
-	private static void initDesktop() {
+	public static void initDesktop() {
 		// Create the main frame
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,6 +44,8 @@ public class Desktop {
 		menuBar.add(menuTools);
 		menuBar.add(menuViews);
 		frame.setJMenuBar(menuBar);
+		
+		initEmailDisplay();
 	}
 
 	public static void addWindow(JInternalFrame window) {

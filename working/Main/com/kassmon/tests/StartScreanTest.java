@@ -11,8 +11,8 @@ public class StartScreanTest {
 	public static void main(String[] args) {
 		
 		
-		System.out.println("Starting Desktop Test...");
-		
+		initDesktop();
+		DevWindow.initDevWindow();
 		
 		
 	}
